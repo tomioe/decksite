@@ -1,0 +1,141 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+p {
+    padding: 0px;
+    margin: 10px 0px 5px 10px;
+}
+
+td {
+	border-bottom: 2px solid #eee;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+p.note {
+    font-style: italic;
+    color: #888888;
+    font-size: 13px;
+}
+
+.custom p.text {
+    display: inline-block;
+}
+
+.emotes td p {
+	text-align: center;
+}
+
+.history td img {
+    padding-left: 12px;
+}
+
+.history td p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.history td#name {
+    width: 190px;
+}
+
+#menu {
+    width: 750px;
+}
+
+#menu ul {
+    font-size: 9pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: -25px;
+    list-style: none;
+}
+
+#menu li {
+    display: inline-block;
+}
+
+#menu a {
+    border-bottom: 2px solid #ccc;
+    display: block;
+    padding: 10px 20px 10px 20px;
+    color: #666;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    color: #28B3EB;
+    border-bottom: 2px solid #28B3EB;
+}
+
+.command {
+    margin-right: 5px;
+    display: inline;
+    font-family: "Lucida Console";
+    font-weight: normal;
+    color: #FA395A;
+    padding: 5px;
+    height: 21px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    background-color: #eee;
+}
+
+.command .mod {
+    background: #090 url('/images/sword.png') no-repeat 0px;
+    padding: 2px 18px 2px 1px;
+    display: inline;
+    border-radius: 2px;
+}
+
+.command .broadcaster {
+	background: #ff0000 url('/images/broadcaster.png') no-repeat 0px;
+	padding: 2px 18px 2px 1px;
+	display: inline;
+	border-radius: 2px;
+}
+
+.command .comment {
+    color: #555;
+}
+
+.footer {
+    width: 10%;
+    font-size: 8pt;
+    border-top: 1px solid #888;
+    color: #888;
+    margin-top: 40px;
+}
+
+
+.login#button a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    background-color: #9071b7;
+    border: 4px solid #593787;
+    padding: 6px;
+}
+
+.login#button a:hover {
+    background-color: #593787;
+}
+
+
+.auth.message {
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.auth.image {
+    margin-left: 40px;
+}

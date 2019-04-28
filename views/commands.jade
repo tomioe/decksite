@@ -1,0 +1,226 @@
+extends layout
+
+block content
+    h2= title
+    table
+        thead
+            tr
+                th Command
+                th Description
+            tr
+                td
+                    .command !decklist
+                    .command !build
+                    .command !deck
+                td
+                    p Links the currently played deck.
+            tr
+                td
+                    .command !decks
+                td
+                    p
+                        | Sends a link to the 
+                        a(href='/history') deck list
+                        | .
+
+            tr
+                td
+                    .command !currentsong
+                    .command !nowplaying
+                    .command !playing
+                    .command !song
+                td
+                    p
+                        | Write the song currently playing in 
+                        a(href='http://plug.dj/forsen') Forsens plug.dj room
+                        | .
+                    br
+            tr
+                td
+                    .command !uptime
+                td
+                    p Shows how long the stream has been online.
+            tr
+                td
+                    .command
+                        span.broadcaster ​
+                        span !title
+                    .command
+                        span.comment {title}
+                td
+                    p Update the stream title to the entered title.
+            tr
+                td
+                    .command
+                        span.broadcaster ​
+                        span !game
+                    .command
+                        span.comment {game}
+                td
+                    p Update the stream game to the entered game.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !setdeck
+                    .command
+                        span.comment {url}
+                td
+                    p Updates the currently played deck to the provided link.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !command
+                    .command
+                        span.comment add
+                    .command
+                        span.comment {!trigger}
+                    .command
+                        span.comment {command}
+                td
+                    p Adds a custom command that gets triggered by writing the specified trigger.
+                    p The trigger must have at least one symbol, other than the prepended '!'.
+                    p It is not possible to add two commands with the same trigger.
+                    p.note Triggers are NOT case sensitive and will be converted to lowercase before they are saved!
+                    br
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !command
+                    .command
+                        span.comment delete
+                    .command
+                        span.comment {!trigger}
+                td
+                    p Deletes the custom command with the specified trigger.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !ban
+                    .command
+                        span.comment ascii
+                    .command
+                        span.comment {on/off}
+                td
+                    p Turn ASCII spam timeouts on/off (e.g. block characters). Current timeout for ASCII ban is 400 seconds.
+                    p.note The message must contain a certain amount of 'ASCII spam' characters before it is timed out.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !ban
+                    .command
+                        span.comment phrase
+                    .command
+                        span.comment {on/off}
+                td
+                    p Turn phrase timeouts on/off (e.g. spam links). Current timeout for writing a banned phrase is 400 seconds.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !ban
+                    .command
+                        span.comment phrase
+                    .command
+                        span.comment {text}
+                td
+                    p Adds {text} to the list of banned phrases.
+                    p Everytime {text} is written in chat, the sender will be timed out. The entered {text} is not case sensitive.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !draw
+                    .command
+                        span.comment start
+                    .command
+                        span.comment {trigger}
+                td
+                    p Starts a giveaway with the specified trigger.
+                    p Every person to type the trigger in chat will be added to the list of eligible people to be drawn.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !draw
+                    .command
+                        span.comment stop
+                td
+                    p Stops the current giveaway and clears the list of people who have entered.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !draw
+                    .command
+                        span.comment pick
+                    .command
+                        span.comment #
+                td
+                    p Picks specified # of eligible winners in the giveaway.
+                    p.note People who previously won a giveaway are not eligible to win two times in a row.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !draw
+                    .command
+                        span.comment repeat
+                td
+                    p Repeats the people who won the last giveaway drawn with '!draw pick'.
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !draw
+                    .command
+                        span.comment clear
+                td
+                    p Clears the entrees and winners in the giveaway (previous winners will persist through a clear).
+            tr
+                td
+                    .command
+                        span.mod ​
+                        span !emoteclear
+                td
+                    p Resets all the "emotes pr. minute" to 0.00.
+                    p.note This should be used in case the emote count cannot reset itself.
+    -if(emoteNames.length > 0)
+        .emotes
+            h2 Emote Counters
+            p Output the number of emotes per minute in chat.
+            table
+                thead
+                    tr
+                        th Command
+                        th(width='80px') Emote
+                    - for (var i = 0; i < emoteNames.length; i++) {
+                    - var backgroundOffset = -30*i+'px;';
+                        tr
+                            td
+                                p.command=twitchEmotes[emoteNames[i]]["command"]
+                            td
+                                div(style="width:80px; height: 30px; background: url('/images/emotes.png') no-repeat 15px "+backgroundOffset title=emoteNames[i])
+                                    p.text
+                    - }
+    -if(commands.length > 0)
+        .custom
+            h2 Custom commands
+            table
+                thead
+                    tr
+                        th(width='250px') Command
+                        th(width='750px') Output
+                   -for cmd in commands
+                   tr
+                        td
+                            p.command=cmd.command.trigger
+                        td
+                            p.text=cmd.command.command
+
+    br
+    p.note Emote and badge images are property of Twitch Interactive.

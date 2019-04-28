@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    h2= title
+    -if(isValid)
+        p Well met, #{twitchUsername}!
+        p
+            | Join your fellow members of the Snus Brotherhood on RaidCall by joining the channel with ID: 
+            b 10305785
+            | .
+        p
+            | The RaidCall client can be 
+            a(href='http://www.raidcall.com/download.html') downloaded here
+            | .
+        p When applying for membership make sure you put your Twitch username into your profile. Once you have applied a moderator will check your application profile and you will be accepted into the raidcall group.
+        p
+            | During events like 'AidsFest' subscribers will be given between 30-40 seconds to speak with Forsen. In order to do so, the 
+            a(href='http://i.imgur.com/RZzbzjQ.png') 'Raise Hand' button
+            |  must be clicked and you will be placed in a queue.
+    -else
+        p
+            | In order to get the RaidCall information, you must be 
+            a(href="http://www.twitch.tv/forsenlol/subscribe") subscribed to Forsen
+            | .
+        p If you are a subscriber, click the button below to verify your subscription!
+        br
+        div.login#button
+            a(onclick='authenticate()' href='#') Connect with Twitch
+            span.auth.image
+            span.auth.message
+        br
+        br
+        p
+            i
+                | Having trouble logging in? Send a Twitch PM to
+                a(href="http://www.twitch.tv/message/compose?to=xx_k") xx_k
+                |  with the subject "RaidCall site login" to get support.

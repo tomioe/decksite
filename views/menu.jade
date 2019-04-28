@@ -1,0 +1,8 @@
+#menu
+    ul
+        - var navTitles = ['home', 'Decks', 'Commands', 'RaidCall', 'donate']
+        - var navUrl    = ['/', '/history', '/commands', '/login', '/donate']
+        - for(var i = 0; i<navTitles.length; i++) {
+            li
+                a(href=navUrl[i])=navTitles[i]
+        - }

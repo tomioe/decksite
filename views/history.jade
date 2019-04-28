@@ -1,0 +1,34 @@
+extends layout
+
+
+block content
+    h2 Decks
+    .history
+        table
+            thead
+                tr
+                    th Class
+                    th Deck Name
+                    th Updated
+                    th Link
+            - for (var i = 0; i < decknames.length; i++) {
+                tr
+                    if decknames[i]
+                        td
+                            img(src=icons[decks[decknames[i]]['class']] alt=decks[decknames[i]]['class'] title=decks[decknames[i]]['class'])
+                        td#name
+                            p= decknames[i]
+                    else
+                        td
+                        td
+                    if decks[decknames[i]]['date']
+                        td= decks[decknames[i]]['date']
+                    else
+                        td
+                    if decks[decknames[i]]['url']
+                        td
+                            a(href=decks[decknames[i]]['url']) Link
+                    else
+                        td
+            - }
+                       

@@ -1,0 +1,4 @@
+body:after {
+	content: url('/images/err.png') url('/images/ok.png') url('/images/wait.gif');
+	display: none;
+}
